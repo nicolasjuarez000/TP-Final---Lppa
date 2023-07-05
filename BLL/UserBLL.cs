@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
+    public enum LoginResult { Success, Failure }
     public class UserBLL
     {
+
+        public LoginResult Login(string username, string hashedPassword)
+        {
+            return LoginResult.Failure;
+        }
     }
 }
