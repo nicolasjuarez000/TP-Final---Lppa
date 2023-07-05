@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BE;
+using BLL;
 
 namespace TP_Final___Lppa
 {
@@ -12,7 +13,22 @@ namespace TP_Final___Lppa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string username = TextBox2.Text;
+            string password = SecurityBLL.Hash(TextBox3.Text);
+
+            UserBLL userBll = new UserBLL();
+            if (userBll.Login(username, password) == LoginResult.Success )
+            {
+                Response.Write("");
+            }
+            else
+            {
+                //Printear nombre de usuario o contraseña incorrecta
+            }
     }
 }
