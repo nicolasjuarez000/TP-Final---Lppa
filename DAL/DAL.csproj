@@ -41,11 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogDAL.cs" />
     <Compile Include="DAO.cs" />
     <Compile Include="Excepciones\ConnectionToDataBaseException.cs" />
+    <Compile Include="Excepciones\DatabaseUnknownErrorException.cs" />
     <Compile Include="UserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{6f062da1-9c70-4dc8-b23c-fc62f2dd0d56}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

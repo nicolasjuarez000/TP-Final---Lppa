@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Data;
 
 namespace DAL
 {
-    internal class DAO
+    public class DAO
     {
-        SqlConnection sqlcon = new SqlConnection("Data Source=localhost;Initial Catalog=lppa_tpfinal;Integrated Security=True");
+        SqlConnection sqlcon = new SqlConnection("Data Source=.;Initial Catalog=TiendaLPPA;Integrated Security=True");
         public int ExecuteNonQuery(string commandText)
         {
             SqlCommand sqlcom = new SqlCommand(commandText, sqlcon);
@@ -37,13 +32,12 @@ namespace DAL
         }
 
 
-        public async Task<int> WriteStoredProcedure(string st, SqlParameter[] parameters)
+        public int WriteStoredProcedure(string st, SqlParameter[] parameters)
         {
             try
             {
                 {
-                    await Task.Delay(000);
-                    await sqlcon.OpenAsync();
+                    sqlcon.Open();
                     var CMD = new SqlCommand
                     {
                         CommandType = CommandType.StoredProcedure,
@@ -51,7 +45,7 @@ namespace DAL
                         Connection = sqlcon
                     };
                     CMD.Parameters.AddRange(parameters);
-                    return await CMD.ExecuteNonQueryAsync();
+                    return CMD.ExecuteNonQuery();
                 }
             }
             catch (SqlException ex) when (ex.Number == 2 || ex.Number == 17142)
@@ -61,17 +55,12 @@ namespace DAL
         }
 
 
-
-
-
-
-        public async Task<double> ReadScalarValue(string st, SqlParameter[] parameters)
+        public double ReadScalarValue(string st, SqlParameter[] parameters)
         {
             try
             {
                 {
-                    await Task.Delay(000);
-                    await sqlcon.OpenAsync();
+                    sqlcon.Open();
                     var CMD = new SqlCommand
                     {
                         CommandType = CommandType.StoredProcedure,
@@ -80,7 +69,7 @@ namespace DAL
                     };
                     if (parameters != null)
                         CMD.Parameters.AddRange(parameters);
-                    var res = await CMD.ExecuteScalarAsync();
+                    var res = CMD.ExecuteScalar();
 
                     try
                     {
@@ -100,47 +89,34 @@ namespace DAL
             }
         }
 
-
-
-
-
-
-
-        public async Task<DataTable> ReadStoredProcedure(string st, SqlParameter[] parameters)
+        public DataTable ReadStoredProcedure(string st, SqlParameter[] parameters)
         {
-            return await Task.Run(async () =>
+            try
             {
-                try
                 {
-                    await Task.Delay(0000);
+                    sqlcon.Open();
+                    var tabla = new DataTable();
+                    var adaptador = new SqlDataAdapter
                     {
-                        await sqlcon.OpenAsync();
-                        var tabla = new DataTable();
-                        var adaptador = new SqlDataAdapter
+                        SelectCommand = new SqlCommand
                         {
-                            SelectCommand = new SqlCommand
-                            {
-                                CommandType = CommandType.StoredProcedure,
-                                CommandText = st,
-                                Connection = sqlcon
-                            }
-                        };
+                            CommandType = CommandType.StoredProcedure,
+                            CommandText = st,
+                            Connection = sqlcon
+                        }
+                    };
 
-                        if (parameters != null)
-                            adaptador.SelectCommand.Parameters.AddRange(parameters);
+                    if (parameters != null)
+                        adaptador.SelectCommand.Parameters.AddRange(parameters);
 
-                        await Task.Run(() =>
-                        {
-                            adaptador.Fill(tabla);
-                        });
-                        return tabla;
-                    }
+                        adaptador.Fill(tabla);
+                    return tabla;
                 }
+            }
                 catch (SqlException ex) when (ex.Number == 2 || ex.Number == 17142)
                 {
                     throw new Excepciones.ConnectionToDataBaseException();
                 }
-            });
         }
 
     }

@@ -18,21 +18,20 @@ namespace TP_Final___Lppa
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string username = TextBox2.Text;
+            string username = TextBox2.Text; 
             string password = SecurityBLL.Hash(TextBox3.Text);
 
             UserBLL userBll = new UserBLL();
-            userBll.Login(username, password);  
-
+            userBll.Login(username, password);
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        /*protected void Button1_Click(object sender, EventArgs e)  Comentado para que no tire error
         {
             string username = TextBox2.Text;
             string password = SecurityBLL.Hash(TextBox3.Text);
 
             UserBLL userBll = new UserBLL();
-            if (userBll.Login(username, password) == LoginResult.Success )
+            if (userBll.Login(username, password) == LoginResult.Success)
             {
                 Response.Write("");
             }
@@ -40,5 +39,36 @@ namespace TP_Final___Lppa
             {
                 //Printear nombre de usuario o contraseña incorrecta
             }
+        }*/
+
+        private void CreateInformationLog(string AssociatedInfo)  //La idea del AssociatedInfo es por ejemplo: si es excepcion
+                                                                  //poner el mensaje, o si es un login poner el username del usuario logeado, etc
+        {
+            LogBLL bitacoraBLL = new LogBLL();
+            bitacoraBLL.LogInformation(AssociatedInfo);
+        }
+
+        private void CreateWarningLog(string AssociatedInfo)
+        {
+            LogBLL bitacoraBLL = new LogBLL();
+            bitacoraBLL.LogWarning(AssociatedInfo);
+        }
+
+        private void CreateErrorLog(string AssociatedInfo)
+        {
+            LogBLL bitacoraBLL = new LogBLL();
+            bitacoraBLL.LogError(AssociatedInfo);
+        }
+
+        private void GetAllLogs()
+        {
+            LogBLL bitacoraBLL = new LogBLL();
+            bitacoraBLL.GetAll();
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Logs.aspx");
+        }
     }
 }

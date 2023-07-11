@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogBLL.cs" />
     <Compile Include="SecurityBLL.cs" />
     <Compile Include="UserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,6 +50,10 @@
     <ProjectReference Include="..\BE\BE.csproj">
       <Project>{6f062da1-9c70-4dc8-b23c-fc62f2dd0d56}</Project>
       <Name>BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{c1ccf285-3bca-4841-9ccd-cc8c369614d1}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

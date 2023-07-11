@@ -10,7 +10,8 @@
     <asp:TextBox ID="TextBox3" runat="server" TextMode="Password"></asp:TextBox>
     <br />
     <br />
-    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Sign in" />
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Sign in" />&nbsp&nbsp&nbsp&nbsp
+    <asp:Button ID="Button2" runat="server" Text="Logs" OnClick="Button2_Click" />
 &nbsp;
 
 </asp:Content>
