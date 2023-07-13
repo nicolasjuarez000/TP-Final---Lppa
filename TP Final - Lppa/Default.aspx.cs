@@ -13,7 +13,23 @@ namespace TP_Final___Lppa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Digitos_Verificadores.CheckDvh() != null)
+            {
+                User user = Digitos_Verificadores.CheckDvh();
+                string Message = "Error en la consistencia de la base de datos. El usuario " + user.username + " Debe ser restaurado.";
+                CreateErrorLog(Message);
+                Response.Write("<script language='javascript'>alert('" + Message + "');</script>");
+                Response.End();
+            }
 
+            if (!Digitos_Verificadores.CheckDvTable("USER_DATA"))
+            {
+                string Message = "Error en la consistencia de la base de datos.";
+                CreateErrorLog(Message);
+                Response.Write("<script language='javascript'>alert('" + Message + "');</script>");
+                Response.End();
+            }
+        
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -22,24 +38,19 @@ namespace TP_Final___Lppa
             string password = SecurityBLL.Hash(TextBox3.Text);
 
             UserBLL userBll = new UserBLL();
-            userBll.Login(username, password);
-        }
-
-        /*protected void Button1_Click(object sender, EventArgs e)  Comentado para que no tire error
-        {
-            string username = TextBox2.Text;
-            string password = SecurityBLL.Hash(TextBox3.Text);
-
-            UserBLL userBll = new UserBLL();
-            if (userBll.Login(username, password) == LoginResult.Success)
+            User user = userBll.Login(username, password);
+            if (user != null)
             {
-                Response.Write("");
+                Session["Username"] = user;
+                Response.Redirect("Landing.aspx");
             }
             else
             {
-                //Printear nombre de usuario o contraseña incorrecta
+                lblloginerror.Text = "Nombre de usuario o contraseña incorrectos";
             }
-        }*/
+        }
+
+
 
         private void CreateInformationLog(string AssociatedInfo)  //La idea del AssociatedInfo es por ejemplo: si es excepcion
                                                                   //poner el mensaje, o si es un login poner el username del usuario logeado, etc
@@ -60,6 +71,7 @@ namespace TP_Final___Lppa
             bitacoraBLL.LogError(AssociatedInfo);
         }
 
+        /**
         private void GetAllLogs()
         {
             LogBLL bitacoraBLL = new LogBLL();
@@ -70,5 +82,6 @@ namespace TP_Final___Lppa
         {
             Response.Redirect("Logs.aspx");
         }
+        **/
     }
 }

@@ -1,26 +1,41 @@
 ﻿using System;
 using BE;
-
+using DAL;
 
 namespace BLL
 {
-    public enum LoginResult { Success, Failure }
+    //public enum LoginResult { Success, Failure }
     public class UserBLL
     {
 
-        public LoginResult Login(string username, string hashedPassword)
+        public User Login(string username, string hashedPassword)
         {
             try
             {
-                
+                UserDAL userdal = new UserDAL();
+                User user = userdal.GetUserbyUsername(username);
+
+                if (user.password == hashedPassword)
+                {
+                    LogBLL logbll = new LogBLL();
+                    logbll.LogInformation("El usuario " + username + " se logueo exitosamente");
+                    return user;
+                }
+                else
+                {
+                    LogBLL logbll = new LogBLL();
+                    logbll.LogWarning("Se ingresó una contraseña incorrecta para " + username );
+                }
+
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                LogBLL logbll = new LogBLL();
+                logbll.LogError(e.Message + " Al intentar loguear a " + username);
+                return null;
             }
 
-            return LoginResult.Failure;
+            return null;
         }
         
     }

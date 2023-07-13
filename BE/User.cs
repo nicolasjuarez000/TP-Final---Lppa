@@ -14,6 +14,7 @@ namespace BE
         public string email { get; set; }
         public string password { get; set; }
         public UserType userType { get; set; }
+        public byte [] dvh { get; set; }
 
         public override string ToString()
         {

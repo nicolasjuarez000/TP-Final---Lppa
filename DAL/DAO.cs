@@ -23,6 +23,16 @@ namespace DAL
             return i;
         }
 
+        public DataSet ExecuteDataset(SqlCommand sqlcommand)
+        {
+            SqlDataAdapter mda = new SqlDataAdapter();
+            sqlcommand.Connection = sqlcon;
+            mda.SelectCommand = sqlcommand;
+            DataSet mds = new DataSet();
+            mda.Fill(mds);
+            return mds;
+        }
+        
         public DataSet ExecuteDataset(string commandText)
         {
             SqlDataAdapter mda = new SqlDataAdapter(commandText, sqlcon);
@@ -31,6 +41,7 @@ namespace DAL
             return mds;
         }
 
+       
 
         public int WriteStoredProcedure(string st, SqlParameter[] parameters)
         {
