@@ -38,5 +38,16 @@ namespace TP_Final___Lppa
             Session["Username"] = null;
             Response.Redirect("Default.aspx");
         }
+
+        protected void btnCreateBackup_Click(object sender, EventArgs e)
+        {
+            BLL.BackupBLL backupBLL = new BackupBLL();
+            var backup = new Backup()
+            {
+                Username = Session["_username"].ToString(),
+                Fecha = DateTime.Now
+            };
+            backupBLL.Create(backup);
+        }
     }
 }

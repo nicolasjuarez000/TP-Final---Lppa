@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using BE;
 using BLL;
 
@@ -19,7 +15,8 @@ namespace TP_Final___Lppa
                 string Message = "Error en la consistencia de la base de datos. El usuario " + user.username + " Debe ser restaurado.";
                 CreateErrorLog(Message);
                 Response.Write("<script language='javascript'>alert('" + Message + "');</script>");
-                Response.End();
+                //Response.End();
+                Response.Redirect("CorruptedDB.aspx");
             }
 
             if (!Digitos_Verificadores.CheckDvTable("USER_DATA"))
@@ -27,6 +24,7 @@ namespace TP_Final___Lppa
                 string Message = "Error en la consistencia de la base de datos.";
                 CreateErrorLog(Message);
                 Response.Write("<script language='javascript'>alert('" + Message + "');</script>");
+                //Response.Redirect("CorruptedDB.aspx");
                 Response.End();
             }
         
@@ -42,6 +40,7 @@ namespace TP_Final___Lppa
             if (user != null)
             {
                 Session["Username"] = user;
+                Session["_username"] = username;
                 Response.Redirect("Landing.aspx");
             }
             else

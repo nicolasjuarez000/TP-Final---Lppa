@@ -56,7 +56,9 @@ namespace DAL
                         Connection = sqlcon
                     };
                     CMD.Parameters.AddRange(parameters);
-                    return CMD.ExecuteNonQuery();
+                    var execute = CMD.ExecuteNonQuery();
+                    sqlcon.Close();
+                    return execute;
                 }
             }
             catch (SqlException ex) when (ex.Number == 2 || ex.Number == 17142)
@@ -81,6 +83,7 @@ namespace DAL
                     if (parameters != null)
                         CMD.Parameters.AddRange(parameters);
                     var res = CMD.ExecuteScalar();
+                    sqlcon.Close();
 
                     try
                     {
@@ -121,6 +124,7 @@ namespace DAL
                         adaptador.SelectCommand.Parameters.AddRange(parameters);
 
                         adaptador.Fill(tabla);
+                    sqlcon.Close();
                     return tabla;
                 }
             }
