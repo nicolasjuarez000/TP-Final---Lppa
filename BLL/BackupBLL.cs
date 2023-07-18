@@ -13,11 +13,11 @@ namespace BLL
             _log = new LogBLL();
         }
 
-        public void Create(BE.Backup backup)
+        public void Create(BE.Backup backup, BE.User user)
         {
             DAL.BackupDAL backupDAL = new DAL.BackupDAL();
             _backupsData.Create(backup);
-            _log.LogInformation("successful_addition_backup");
+            _log.LogInformation("El usuario " + user.username +" realizó un backup de la base de datos.");
         }
 
         public IList<BE.Backup> GetAll()
@@ -28,7 +28,7 @@ namespace BLL
         public void Restore(BE.Backup backup)
         {
             _backupsData.Restore(backup);
-            _log.LogInformation("data_restored_from_a_backup");
+            _log.LogInformation("Se realizó un restore de la base de datos");
         }
     }
 }

@@ -26,7 +26,7 @@ namespace DAL
             try
             {
                 var backups = GetAll();
-                backup.ID = backups.Count > 0 ? backups.First().ID + 1 : 1; //no es identidad. se usa el first() en lugar de last() porque se trae los registros ordenados por fecha en orden descendiente
+                backup.ID = backups.Count > 0 ? backups.Last().ID + 1 : 1; //no es identidad. se usa el first() en lugar de last() porque se trae los registros ordenados por fecha en orden descendiente
                 SqlParameter[] parameters = {
                     new SqlParameter("@idBackup", backup.ID),
                     new SqlParameter("@username", backup.Username),

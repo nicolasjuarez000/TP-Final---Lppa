@@ -88,6 +88,7 @@ namespace DAL
                 };
                 eventosBitacora.Add(evento);
             }
+            eventosBitacora.Reverse();
             return eventosBitacora;
         }
 

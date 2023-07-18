@@ -9,23 +9,32 @@ namespace TP_Final___Lppa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Username"] != null)
+            {
+                Response.Redirect("Landing.aspx");
+            }
             if (Digitos_Verificadores.CheckDvh() != null)
             {
+
                 User user = Digitos_Verificadores.CheckDvh();
+                Session["User"] = user;
+                Session["dbErrorType"] = "dvh";
                 string Message = "Error en la consistencia de la base de datos. El usuario " + user.username + " Debe ser restaurado.";
                 CreateErrorLog(Message);
-                Response.Write("<script language='javascript'>alert('" + Message + "');</script>");
+                //Response.Write("<script language='javascript'>alert('" + Message + "');</script>");
                 //Response.End();
                 Response.Redirect("CorruptedDB.aspx");
+                
             }
 
             if (!Digitos_Verificadores.CheckDvTable("USER_DATA"))
             {
+                Session["dbErrorType"] = "dvv";
                 string Message = "Error en la consistencia de la base de datos.";
                 CreateErrorLog(Message);
-                Response.Write("<script language='javascript'>alert('" + Message + "');</script>");
-                //Response.Redirect("CorruptedDB.aspx");
-                Response.End();
+                //Response.Write("<script language='javascript'>alert('" + Message + "');</script>");
+                Response.Redirect("CorruptedDB.aspx");
+                //Response.End();
             }
         
         }

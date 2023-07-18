@@ -13,13 +13,25 @@ namespace TP_Final___Lppa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Unauthorized.aspx");
+                return;
+            }
             User user = (User)Session["Username"];
             lblusername.Text = user.username;
 
             if (user.userType  == UserType.user)
             {
                 btnlogs.Visible = false;
+                btnRestore.Visible = false; 
+                btnCreateBackup.Visible = false;
             }
+            if (user.userType == UserType.admin)
+            {
+                btnRestore.Visible = false;
+            }
+
         }
 
         protected void btnlogs_Click(object sender, EventArgs e)
@@ -41,13 +53,23 @@ namespace TP_Final___Lppa
 
         protected void btnCreateBackup_Click(object sender, EventArgs e)
         {
+
+
             BLL.BackupBLL backupBLL = new BackupBLL();
             var backup = new Backup()
             {
                 Username = Session["_username"].ToString(),
                 Fecha = DateTime.Now
             };
-            backupBLL.Create(backup);
+            backupBLL.Create(backup, (User)Session["Username"]);
+            string Message = "Se creó un nuevo backup de manera exitosa";
+            Response.Write("<script language='javascript'>alert('" + Message + "');</script>");
+            btnCreateBackup.Visible = false;
+        }
+
+        protected void btnRestore_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CorruptedDB.aspx");
         }
     }
 }

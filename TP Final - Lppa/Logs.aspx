@@ -57,7 +57,7 @@
             <label for="Label1" class="label">Logs</label>
             <br />
             <br />
-            <asp:GridView ID="GridView1" runat="server" CssClass="gridview"></asp:GridView>
+            <asp:GridView ID="GridView1" runat="server" CssClass="gridview" OnSelectedIndexChanged="GridView1_SelectedIndexChanged"></asp:GridView>
             <br />
             <br />
             <br />
