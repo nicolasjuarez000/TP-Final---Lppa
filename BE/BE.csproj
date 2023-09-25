@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Backup.cs" />
+    <Compile Include="Buyer.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Purchase.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -61,6 +61,7 @@
             <asp:Label ID="lblusername" runat="server" Text="Label" CssClass="username-label"></asp:Label>
             <p>&nbsp;</p>
             <asp:Button ID="btnlogs" runat="server" OnClick="btnlogs_Click" Text="Logs" CssClass="button" />
+            <asp:Button ID="btnData" runat="server" Text="Purchases" CssClass="button" OnClick="btnData_Click" />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Logout" CssClass="button" />
             <asp:Button ID="btnCreateBackup" runat="server" Text="Create Backup" CssClass="button" OnClick="btnCreateBackup_Click" />
             <asp:Button ID="btnRestore" runat="server" OnClick="btnRestore_Click" Text="Restore DB"  CssClass="button"/>
