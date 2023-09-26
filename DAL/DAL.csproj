@@ -42,11 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackupDAL.cs" />
+    <Compile Include="BuyerDAL.cs" />
     <Compile Include="DVS.cs" />
     <Compile Include="LogDAL.cs" />
     <Compile Include="DAO.cs" />
     <Compile Include="Excepciones\ConnectionToDataBaseException.cs" />
     <Compile Include="Excepciones\DatabaseUnknownErrorException.cs" />
+    <Compile Include="ProductsDAL.cs" />
+    <Compile Include="PurchaseDAL.cs" />
     <Compile Include="UserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

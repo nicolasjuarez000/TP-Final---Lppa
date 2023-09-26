@@ -71,5 +71,10 @@ namespace TP_Final___Lppa
         {
             Response.Redirect("CorruptedDB.aspx");
         }
+
+        protected void btnData_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Purchases.aspx");
+        }
     }
 }
