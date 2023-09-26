@@ -20,5 +20,10 @@ namespace BLL
         {
             return _purchaseData.GetAll();
         }
+
+        public List<dynamic> getAllToGridview()
+        {
+            return _purchaseData.GetAllToGridview();
+        }
     }
 }

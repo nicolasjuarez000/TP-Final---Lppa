@@ -72,15 +72,32 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
-            <asp:CheckBox ID="cbFiltroProducto" runat="server" />
+            <asp:Label ID="Label3" runat="server" Text="Ventas" Font-Bold="True" Font-Overline="False" Font-Size="XX-Large" Font-Strikeout="False"></asp:Label>
             <br />
-            <asp:Label ID="Label1" runat="server" Text="Productos"></asp:Label>
             <br />
-            <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+            <asp:Label ID="Label1" runat="server" Text="Filtrar por productos"></asp:Label>
+            &nbsp
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"></asp:DropDownList>
             <br />
-            <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" CssClass="filter-button" OnClick="btnFiltrar_Click" />
             <br />
-            <asp:GridView ID="GridView1" runat="server" CssClass="gridview"></asp:GridView>
+            <asp:Label ID="Label2" runat="server" Text="Filtrar por buyer"></asp:Label>
+            &nbsp
+            <asp:DropDownList ID="dropBuyer" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropBuyer_SelectedIndexChanged"></asp:DropDownList>
+            <br />
+            <br />
+            <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" OnSelectionChanged="Calendar1_SelectionChanged" Width="200px">
+                <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
+                <NextPrevStyle VerticalAlign="Bottom" />
+                <OtherMonthDayStyle ForeColor="#808080" />
+                <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
+                <SelectorStyle BackColor="#CCCCCC" />
+                <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
+                <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
+                <WeekendDayStyle BackColor="#FFFFCC" />
+            </asp:Calendar>
+            <br />
+            <asp:GridView ID="GridView1" runat="server" CssClass="gridview">
+            </asp:GridView>
         </div>
     </form>
 </body>

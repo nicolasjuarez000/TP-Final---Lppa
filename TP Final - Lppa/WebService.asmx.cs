@@ -18,19 +18,19 @@ namespace TP_Final___Lppa
     {
 
         [WebMethod]
-        public string getPurchasesByBuyerID()
+        public List<dynamic> getPurchasesByBuyerID(List<dynamic> lista, int buyerId)
         {
-            return "Hola a todos";
+            return lista.Where(product => product.buyerId == buyerId).ToList();
         }
 
         [WebMethod]
-        public string getPurchasesByDate()
+        public List<dynamic> getPurchasesByDate(List<dynamic> lista, DateTime date)
         {
-            return "Hola a todos";
+            return lista.Where(purchase => purchase.date == date).ToList();
         }
 
         [WebMethod]
-        public List<BE.Purchase> getPurchasesByProductID(List<BE.Purchase> lista, int productId)
+        public List<dynamic> getPurchasesByProductID(List<dynamic> lista, int productId)
         {
             return lista.Where(product => product.productId == productId).ToList();
         }

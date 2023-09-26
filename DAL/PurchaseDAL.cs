@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Dynamic;
 using BE;
 
 namespace DAL
@@ -30,6 +31,26 @@ namespace DAL
                 purchasesList.Add(purchase);
             }
             return purchasesList;
+        }
+
+        public List<dynamic> GetAllToGridview()
+        {
+            List<dynamic> dList = new List<dynamic>();
+            var tabla = _db.ReadStoredProcedure("SP_GET_DATA_TO_GRIDVIEW", null);
+
+            foreach (DataRow registro in tabla.Rows)
+            {
+                dynamic dObject = new ExpandoObject();
+                dObject.purchaseId = int.Parse(registro["PURCHASE_ID"].ToString());
+                dObject.buyerId = int.Parse(registro["BUYER_ID"].ToString());
+                dObject.productId = int.Parse(registro["PRODUCT_ID"].ToString());
+                dObject.buyer = registro["BUYER"].ToString();
+                dObject.product = registro["PRODUCT"].ToString();
+                dObject.date = DateTime.Parse(registro["DATE"].ToString());
+                dObject.amount = int.Parse(registro["AMOUNT"].ToString());
+                dList.Add(dObject);
+            }
+            return dList;
         }
     }
 }
