@@ -78,6 +78,15 @@ namespace TP_Final___Lppa
         protected global::System.Web.UI.WebControls.Calendar Calendar1;
 
         /// <summary>
+        /// Control btnDescarga.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDescarga;
+
+        /// <summary>
         /// Control GridView1.
         /// </summary>
         /// <remarks>

@@ -96,6 +96,8 @@
                 <WeekendDayStyle BackColor="#FFFFCC" />
             </asp:Calendar>
             <br />
+            <br />
+            <asp:Button ID="btnDescarga" runat="server" Text="Descargar reporte" OnClick="btnDescarga_Click" />
             <asp:GridView ID="GridView1" runat="server" CssClass="gridview">
             </asp:GridView>
         </div>
