@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getPurchasesByBuyerID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lista" type="tns:ArrayOfAnyType" />
+            <s:element minOccurs="1" maxOccurs="1" name="buyerId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getPurchasesByBuyerIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPurchasesByBuyerIDResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPurchasesByDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lista" type="tns:ArrayOfAnyType" />
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPurchasesByDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPurchasesByDateResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPurchasesByProductID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lista" type="tns:ArrayOfAnyType" />
+            <s:element minOccurs="1" maxOccurs="1" name="productId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPurchasesByProductIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPurchasesByProductIDResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPurchases">
+        <s:complexType />
+      </s:element>
+      <s:element name="getPurchasesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPurchasesResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getPurchasesByBuyerIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getPurchasesByBuyerID" />
+  </wsdl:message>
+  <wsdl:message name="getPurchasesByBuyerIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getPurchasesByBuyerIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPurchasesByDateSoapIn">
+    <wsdl:part name="parameters" element="tns:getPurchasesByDate" />
+  </wsdl:message>
+  <wsdl:message name="getPurchasesByDateSoapOut">
+    <wsdl:part name="parameters" element="tns:getPurchasesByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPurchasesByProductIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getPurchasesByProductID" />
+  </wsdl:message>
+  <wsdl:message name="getPurchasesByProductIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getPurchasesByProductIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPurchasesSoapIn">
+    <wsdl:part name="parameters" element="tns:getPurchases" />
+  </wsdl:message>
+  <wsdl:message name="getPurchasesSoapOut">
+    <wsdl:part name="parameters" element="tns:getPurchasesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="getPurchasesByBuyerID">
+      <wsdl:input message="tns:getPurchasesByBuyerIDSoapIn" />
+      <wsdl:output message="tns:getPurchasesByBuyerIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPurchasesByDate">
+      <wsdl:input message="tns:getPurchasesByDateSoapIn" />
+      <wsdl:output message="tns:getPurchasesByDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPurchasesByProductID">
+      <wsdl:input message="tns:getPurchasesByProductIDSoapIn" />
+      <wsdl:output message="tns:getPurchasesByProductIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPurchases">
+      <wsdl:input message="tns:getPurchasesSoapIn" />
+      <wsdl:output message="tns:getPurchasesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getPurchasesByBuyerID">
+      <soap:operation soapAction="http://tempuri.org/getPurchasesByBuyerID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPurchasesByDate">
+      <soap:operation soapAction="http://tempuri.org/getPurchasesByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPurchasesByProductID">
+      <soap:operation soapAction="http://tempuri.org/getPurchasesByProductID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPurchases">
+      <soap:operation soapAction="http://tempuri.org/getPurchases" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getPurchasesByBuyerID">
+      <soap12:operation soapAction="http://tempuri.org/getPurchasesByBuyerID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPurchasesByDate">
+      <soap12:operation soapAction="http://tempuri.org/getPurchasesByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPurchasesByProductID">
+      <soap12:operation soapAction="http://tempuri.org/getPurchasesByProductID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPurchases">
+      <soap12:operation soapAction="http://tempuri.org/getPurchases" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="https://localhost:44348/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="https://localhost:44348/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

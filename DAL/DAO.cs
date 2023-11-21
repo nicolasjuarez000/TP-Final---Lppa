@@ -5,7 +5,7 @@ namespace DAL
 {
     public class DAO
     {
-        SqlConnection sqlcon = new SqlConnection("Data Source=.;Initial Catalog=TiendaLPPA;Integrated Security=True");
+        SqlConnection sqlcon = new SqlConnection("Data Source=DESKTOP-3KIKH2I;Initial Catalog=TiendaLPPA;Integrated Security=True");
         public int ExecuteNonQuery(string commandText)
         {
             SqlCommand sqlcom = new SqlCommand(commandText, sqlcon);
