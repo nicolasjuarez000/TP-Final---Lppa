@@ -65,6 +65,7 @@
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Logout" CssClass="button" />
             <asp:Button ID="btnCreateBackup" runat="server" Text="Create Backup" CssClass="button" OnClick="btnCreateBackup_Click" />
             <asp:Button ID="btnRestore" runat="server" OnClick="btnRestore_Click" Text="Restore DB"  CssClass="button"/>
+            <asp:Button ID="btnCart" runat="server" Text="Cart" CssClass="button" OnClick="btnCart_Click" />
         </div>
     </form>
 </body>

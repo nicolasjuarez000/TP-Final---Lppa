@@ -20,5 +20,10 @@ namespace BLL
         {
             return _productsData.GetAll();
         }
+
+        public Product getById(int productId)
+        {
+            return _productsData.getById(productId);
+        }
     }
 }

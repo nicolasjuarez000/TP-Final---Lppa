@@ -76,5 +76,10 @@ namespace TP_Final___Lppa
         {
             Response.Redirect("Purchases.aspx");
         }
+
+        protected void btnCart_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Cart.aspx");
+        }
     }
 }

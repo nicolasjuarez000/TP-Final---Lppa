@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using BE;
 
 namespace DAL
@@ -27,6 +28,23 @@ namespace DAL
                 productsList.Add(product);
             }
             return productsList;
+        }
+
+        public Product getById(int productId)
+        {
+            SqlParameter[] parameters = {
+                    new SqlParameter("@productId", productId)
+                };
+            var tabla = _db.ReadStoredProcedure("SP_PRODUCT_GET_BY_ID", parameters);
+
+            var registro = tabla.Rows[0];
+            var product = new BE.Product
+            {
+                id = int.Parse(registro["ID"].ToString()),
+                description = registro["DESCRIPTION"].ToString(),
+                unitPrice = int.Parse(registro["UNIT_PRICE"].ToString())
+            };
+            return product;
         }
     }
 }
