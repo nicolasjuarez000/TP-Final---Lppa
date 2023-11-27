@@ -9,5 +9,8 @@ namespace BE
         public int productId { get; set; }
         public DateTime date { get; set; }
         public int amount { get; set; }
+        public string buyer { get; set; }
+        public string product { get; set; }
+
     }
 }

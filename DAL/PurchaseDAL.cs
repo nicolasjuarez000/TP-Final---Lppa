@@ -52,5 +52,26 @@ namespace DAL
             }
             return dList;
         }
+
+        public List<Purchase> getAllPurchaseToGridview()
+        {
+            List<Purchase> pList = new List<Purchase>();
+            var tabla = _db.ReadStoredProcedure("SP_GET_DATA_TO_GRIDVIEW", null);
+
+            foreach (DataRow registro in tabla.Rows)
+            {
+                Purchase p = new Purchase();
+                p.id = int.Parse(registro["PURCHASE_ID"].ToString());
+                p.buyerId = int.Parse(registro["BUYER_ID"].ToString());
+                p.productId = int.Parse(registro["PRODUCT_ID"].ToString());
+                p.buyer = registro["BUYER"].ToString();
+                p.product = registro["PRODUCT"].ToString();
+                p.date = DateTime.Parse(registro["DATE"].ToString());
+                p.amount = int.Parse(registro["AMOUNT"].ToString());
+                pList.Add(p);
+            }
+            return pList;
+        }
+        
     }
 }

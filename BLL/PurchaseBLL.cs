@@ -25,5 +25,12 @@ namespace BLL
         {
             return _purchaseData.GetAllToGridview();
         }
+
+        //para xamarin
+        public List<Purchase> getAllPurchaseToGridview()
+        {
+            return _purchaseData.getAllPurchaseToGridview();
+        }
+
     }
 }
