@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.Android", "Mobile\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.iOS", "Mobile\Mobile.iOS\Mobile.iOS.csproj", "{27AE507D-810D-4079-AE16-C123A7D747C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile", "Mobile\Mobile\Mobile.csproj", "{1C48882C-A0E4-4755-9E90-D74DEFFA2557}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mobile", "Mobile\Mobile\Mobile.csproj", "{1C48882C-A0E4-4755-9E90-D74DEFFA2557}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,9 +131,9 @@ Global
 		{C1CCF285-3BCA-4841-9CCD-CC8C369614D1}.Release|x64.Build.0 = Release|Any CPU
 		{C1CCF285-3BCA-4841-9CCD-CC8C369614D1}.Release|x86.ActiveCfg = Release|Any CPU
 		{C1CCF285-3BCA-4841-9CCD-CC8C369614D1}.Release|x86.Build.0 = Release|Any CPU
-		{042F3FB1-F9E5-4E6A-B191-B42A9AC441FE}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{042F3FB1-F9E5-4E6A-B191-B42A9AC441FE}.Debug|Any CPU.Build.0 = Debug|x64
-		{042F3FB1-F9E5-4E6A-B191-B42A9AC441FE}.Debug|Any CPU.Deploy.0 = Debug|x64
+		{042F3FB1-F9E5-4E6A-B191-B42A9AC441FE}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{042F3FB1-F9E5-4E6A-B191-B42A9AC441FE}.Debug|Any CPU.Build.0 = Debug|x86
+		{042F3FB1-F9E5-4E6A-B191-B42A9AC441FE}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{042F3FB1-F9E5-4E6A-B191-B42A9AC441FE}.Debug|ARM.ActiveCfg = Debug|ARM
 		{042F3FB1-F9E5-4E6A-B191-B42A9AC441FE}.Debug|ARM.Build.0 = Debug|ARM
 		{042F3FB1-F9E5-4E6A-B191-B42A9AC441FE}.Debug|ARM.Deploy.0 = Debug|ARM
